@@ -1,0 +1,5 @@
+# Git self-hosting
+Gitea
+
+# CI/CD
+Jenkins
