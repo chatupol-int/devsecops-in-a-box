@@ -1,0 +1,5 @@
+# Download the minikube to create a local cluster
+minikube start
+
+# Download the calico network plugin and plug to the cluster
+kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
