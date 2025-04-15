@@ -12,7 +12,7 @@ Ops software
 - Prometheus
 - Grafana
 - CI/CD (Gitea)
-- Jenkins
+<!-- - Jenkins -->
 
 Sec 
 - Sonarqube
