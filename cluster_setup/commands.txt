@@ -1,5 +1,48 @@
-# Download the minikube to create a local cluster
+### start prerequisite ###
+- kubectl
+- docker
+- docker-compose
+- minikube
+- Ubuntu
+### end prerequisite ###
+
+### start kube setup ###
 minikube start
 
 # Download the calico network plugin and plug to the cluster
 kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
+
+### end kube setup ###
+
+### start setup docker image registry ###
+
+# create a kube namespace for a registry
+kubectl create namespace registry
+
+# generate docker auth
+htpasswd -Bbn tiger PuI5UEnzvPBHyhvx > htpasswd
+
+# generate the tls related
+openssl req -x509 -nodes -days 365 -newkey rsa:4096   -keyout domain.key -out domain.crt   -config openssl-san.conf
+
+# create kube secret for tls
+kubectl create secret generic registry-tls \
+  --from-file=tls.crt=certs/tls.crt \
+  --from-file=tls.key=certs/tls.key \
+  -n registry
+
+# create kube secret for docker auth
+kubectl create secret generic registry-auth \
+  --from-file=htpasswd=auth/htpasswd \
+  -n registry
+
+# start running docker registry
+cd ./containerization/kube/registry
+kubectl apply -f registry
+
+### end setup docker image registry ###
+
+### start gitea setup ###
+cd ./docker-composes/gitea
+docker-compose up -d .
+### end gitea setup ###
