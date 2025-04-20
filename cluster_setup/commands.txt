@@ -45,4 +45,18 @@ kubectl apply -f registry
 ### start gitea setup ###
 cd ./docker-composes/gitea
 docker-compose up -d .
+
+# setup the gitea action runner
+0. update package
+apk update
+
+1. install the docker (to use the docker commands in the build process)
+apk add docker-cli
+
+2. install the nodejs (to checkout feature)
+apk add nodejs npm  
+
+3. install the kubectl (to build)
+apk add --no-cache kubectl
+
 ### end gitea setup ###
