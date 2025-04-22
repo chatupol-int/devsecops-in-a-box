@@ -52,7 +52,7 @@ services:
     volumes:
       - ./runner:/data
       - /var/run/docker.sock:/var/run/docker.sock
-      - ~/.kube/config:~/.kube/config
+      - ~/.kube/config:/root/.kube/config:ro
     networks:
       - gitea
     environment:
