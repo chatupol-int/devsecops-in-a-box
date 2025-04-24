@@ -58,7 +58,13 @@ apk add nodejs npm
 
 3. install the kubectl (to build)
 apk add --no-cache kubectl
-3.1 config the kubectl config with the config as the cluster has
+3.1 config the kubectl config with the kube config as the cluster has
 3.2 re-run the docker gitea action runner with the host network (maybe use docker commit to save the container state)
+
+4. install the sonarQube scanner
+wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-7.1.0.4889-linux-x64.zip
+mv sonar-scanner-7.1.0.4889-linux-x64 /opt/sonar-scanner
+export PATH=$PATH:/opt/sonar-scanner/bin
+4.1 mount the source code to the container (extremely weird)
 
 ### end gitea setup ###
