@@ -6,6 +6,8 @@
 - Ubuntu
 ### end prerequisite ###
 
+---------------------------------------------------------------------
+
 ### start kube setup ###
 minikube start
 
@@ -13,6 +15,8 @@ minikube start
 kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml
 
 ### end kube setup ###
+
+---------------------------------------------------------------------
 
 ### start setup docker image registry ###
 
@@ -42,6 +46,8 @@ kubectl apply -f registry
 
 ### end setup docker image registry ###
 
+---------------------------------------------------------------------
+
 ### start gitea setup ###
 cd ./docker-composes/gitea
 docker-compose up -d .
@@ -64,4 +70,20 @@ apk add --no-cache kubectl
 4. install the sonarQube scanner
 4.1 in the action, uses the "checkout" to clone the repository.
 
+5. install the trivy
+
 ### end gitea setup ###
+
+---------------------------------------------------------------------
+
+### start local setup ###
+
+1. golang
+2. docker 
+3. kubectl
+4. osv
+5. sonarQube
+6. python
+6. trivy (optional)
+
+### end local setup ###
